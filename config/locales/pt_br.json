@@ -1,0 +1,18 @@
+{
+	"Error.User.Create.Email.AlreadyExists"								   		: "Email já está em uso, caso já tenha cadastro faça o login.",
+	"Error.User.Create.Email.NotInformed" 									 		: "Email não informado.",
+	"Error.User.Create.Email.Invalid"												 		: "Email inválido.",
+	"Error.User.Create.Password.NotInformed"								 		: "Senha não informada.",
+	"Error.User.Create.Password.InvalidSize"								 		: "Senha não pode ser menor que 6 digitos.",
+	"Error.User.Create.Name.NotInformed" 										 		: "Nome não informado.",
+	"Error.User.Find.Id.NotFound"				 										 		: "Usuário não encontrado.",
+	"Error.User.Login.All.Invalid"															: "Login Invalido.",
+	"Error.User.Login.All.NotInformed"													: "Usuãrio ou senha não informados.",
+	"Error.User.Login.All.WrongPassword"												: "Senha Incorreta.",
+	"Error.Auth.Token.Unformatted"															:	"Token não está no formato correto.",
+	"Error.Auth.Token.NotFound"																	: "Token de autorização não encontrado.",
+	"Error.Auth.Token.Invalid"																	: "Token inválido.",
+	"Error.Auth.Admin.Invalid"																	: "Usuário não é um administrador.",
+	"Error.Auth.User.Unauthorized"															: "Usuário não autorizado.",
+	"Error.Auth.Admin.Agency.Invalid"														: "Usuário não é um administrador da agência."
+}
