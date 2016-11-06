@@ -29,6 +29,8 @@ module.exports.policies = {
 
   UserController: {
     '*': ['basicAuth', 'adminAuth'],
-    'me': ['basicAuth']
+    'me': ['basicAuth'],
+    'test': true,
+    'populatePerson': true
   }
 };
