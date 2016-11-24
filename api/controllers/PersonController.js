@@ -14,6 +14,20 @@ module.exports = {
 		});
 	},
 
+	search: function(req, res) {
+    var filter = req.query.filter;
+    if (!filter) return res.badRequest();
+
+    Person
+      .find()
+      .where({
+        contains: { fullName: filter }
+      })
+      .then(function(results) {
+        return res.ok({people: results});
+      });
+  },
+
 	upload: function(req, res) {
 	  req.file('avatar').upload(function (err, uploadedFiles) {
 	    var url = _.first(uploadedFiles).fd;

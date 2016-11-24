@@ -70,6 +70,11 @@ module.exports.routes = {
     controller: 'PersonController',
     action: 'destroy'
   },
+
+  'GET /searchPeople': {
+    controller: 'PersonController',
+    action: 'search'
+  },
   /***************************************************************************
   *                                                                          *
   * Custom routes here...                                                    *

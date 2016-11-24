@@ -35,6 +35,20 @@ module.exports = {
 	  });
 	},
 
+	search: function(req, res) {
+    var filter = req.query.filter;
+    if (!filter) return res.badRequest();
+
+    User
+      .find()
+      .where({
+        contains: { name: filter }
+      })
+      .then(function(results) {
+        return res.ok({users: results});
+      });
+  },
+
 	test: function(req, res) {
 		var fs = require('fs'),
 		request = require('request');

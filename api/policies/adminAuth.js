@@ -6,7 +6,7 @@
 */
 
 module.exports = function (req, res, next) {
-  if (req.user && req.user.role != 'admin') {
+  if (req.user && req.user.role != 'admin' && req.user.role != 'professional') {
     return res.json(403, {message: sails.__("Error.Auth.Admin.Invalid")});
   }
   next();

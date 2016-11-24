@@ -19,7 +19,7 @@ module.exports = {
     steganoImage: 'string',
     role: {
       type: 'string',
-      enum: ['basic', 'adminAgency', 'admin'],
+      enum: ['basic', 'professional', 'admin'],
       defaultsTo: 'client'
     },
     toJSON: function () {
