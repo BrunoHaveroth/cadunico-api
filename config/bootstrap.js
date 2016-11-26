@@ -14,19 +14,19 @@ module.exports.bootstrap = function(cb) {
   User
     .find()
     .then(function(users) {
-      if (users.length > 0) cb();
-      //
-      // User
-      //   .create({
-      //     email: 'admin@admin.com',
-      //     password: '123123',
-      //     confirmPassword: '123123',
-      //     name: 'Admin',
-      //     role: 'admin',
-      //     steganoImage: 'assets/images/admin.png'
-      //   }).then(function() {
-      //     cb();
-      //   });
+      if (users.length > 0) return cb();
+      User
+        .create({
+          email: 'admin@admin.com',
+          password: '123123',
+          confirmPassword: '123123',
+          name: 'Admin',
+          role: 'admin',
+          keepImage: true,
+          steganoImage: 'assets/images/admin.png'
+        }).then(function() {
+          console.log('Admin criado com sucesso.');
+          cb();
+        });
     })
-
 };

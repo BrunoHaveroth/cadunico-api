@@ -32,6 +32,7 @@ module.exports = {
     motherName      : 'string',
     fatherName      : 'string',
 
-    steganoImage    : 'string'
+    steganoImage       : 'string',
+    updateSteganoImage : 'string'
   }
 };

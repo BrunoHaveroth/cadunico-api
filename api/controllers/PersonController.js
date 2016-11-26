@@ -14,6 +14,16 @@ module.exports = {
 		});
 	},
 
+	update: function(req, res) {
+		Person.update(req.params.id, req.body.person)
+		.then(function(results) {
+			return res.ok(_.first(results));
+		})
+		.catch(function(err) {
+			return res.badRequest(err.message);
+		});
+	},
+
 	search: function(req, res) {
     var filter = req.query.filter;
     if (!filter) return res.badRequest();

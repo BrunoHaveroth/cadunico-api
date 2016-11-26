@@ -17,6 +17,8 @@ module.exports = {
     encryptedPassword: 'string',
     name: 'string',
     steganoImage: 'string',
+    keepImage: 'boolean',
+    updateSteganoImage : 'string',
     role: {
       type: 'string',
       enum: ['basic', 'professional', 'admin'],

@@ -24,6 +24,17 @@ module.exports = {
 		});
 	},
 
+	update: function(req, res) {
+		delete req.body.user.password;
+		User.update(req.params.id, req.body.user)
+		.then(function(results) {
+			return res.ok(_.first(results));
+		})
+		.catch(function(err) {
+			return res.badRequest(err.message);
+		});
+	},
+
 	me: function (req, res) {
 		res.json(200, {user: req.user});
 	},
