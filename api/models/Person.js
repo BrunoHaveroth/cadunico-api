@@ -33,6 +33,7 @@ module.exports = {
     fatherName      : 'string',
 
     steganoImage       : 'string',
-    updateSteganoImage : 'string'
+    updateSteganoImage : 'string',
+    keepImage          : 'boolean'
   }
 };

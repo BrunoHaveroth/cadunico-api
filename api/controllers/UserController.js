@@ -60,32 +60,6 @@ module.exports = {
       });
   },
 
-	test: function(req, res) {
-		var fs = require('fs'),
-		request = require('request');
-
-		var download = function(uri, filename, callback){
-			request.head(uri, function(err, res, body){
-				console.log('content-type:', res.headers['content-type']);
-				console.log('content-length:', res.headers['content-length']);
-				request(uri).pipe(fs.createWriteStream(filename)).on('close', callback);
-			});
-		};
-
-		var names = ['Aatrox', 'Ahri', 'Akali', 'Alistar', 'Amumu', 'Anivia', 'Annie', 'Ashe', 'Azir', 'Blitzcrank', 'Brand', 'Braum', 'Caitlyn', 'Cassiopeia', 'Corki', 'Darius', 'Diana', 'Draven',
-		 'Ekko', 'Elise', 'Evelynn', 'Ezreal', 'Fiora', 'Fizz', 'Galio', 'Gangplank', 'Garen', 'Gnar', 'Gragas', 'Graves', 'Hecarim', 'Heimerdinger', 'Illaoi', 'Irelia', 'Ivern', 'Janna', 'Jax',
-		 'Jayce', 'Jhin', 'Jinx', 'Kalista', 'Karma', 'Karthus', 'Kassadin', 'Katarina', 'Kayle', 'Kennen', 'Kindred', 'Leona', 'Lissandra', 'Lucian', 'Lulu', 'Lux', 'Malphite', 'Malzahar', 'Maokai',
-		 'Mordekaiser', 'Morgana', 'Nami', 'Nasus', 'Nautilus', 'Nidalee', 'Nocturne', 'Nunu', 'Olaf', 'Orianna', 'Pantheon', 'Poppy', 'Quinn', 'Rammus', 'Renekton', 'Rengar', 'Riven', 'Rumble', 'Ryze', 'Sejuani',
-		 'Shaco', 'Shen', 'Shyvana', 'Singed', 'Sion', 'Sivir', 'Skarner', 'Sona', 'Soraka', 'Swain', 'Syndra', 'Taliyah', 'Talon', 'Taric', 'Teemo', 'Thresh', 'Tristana', 'Trundle', 'Tryndamere', 'Twitch',
-		 'Udyr', 'Urgot', 'Varus', 'Vayne', 'Veigar', 'Vi', 'Viktor', 'Vladimir', 'Volibear', 'Warwick', 'Xerath', 'Yasuo', 'Yorick', 'Zac', 'Zed', 'Ziggs', 'Zilean', 'Zyra'];
-
-		names.forEach(function(item, index) {
-			download('http://ddragon.leagueoflegends.com/cdn/6.20.1/img/champion/'+ item +'.png', 'assets/images/'+ item +'.png', function(){
-				console.log('---' + index + '/' + names.length);
-			});
-		});
-	},
-
 	populatePerson: function() {
 		var model = {
 			city: "Cidade Teste",
@@ -103,29 +77,23 @@ module.exports = {
 			gender: "Masculino",
 			skinColor: "Preta",
 			motherName: "Joana teste",
-			fatherName: "Mario teste"
+			fatherName: "Mario teste",
+			keepImage: true
 		};
 
-		var names = ['Aatrox', 'Ahri', 'Akali', 'Alistar', 'Amumu', 'Anivia', 'Annie', 'Ashe', 'Azir', 'Blitzcrank', 'Brand', 'Braum', 'Caitlyn', 'Cassiopeia', 'Corki', 'Darius', 'Diana', 'Draven',
-		 'Ekko', 'Elise', 'Evelynn', 'Ezreal', 'Fiora', 'Fizz', 'Galio', 'Gangplank', 'Garen', 'Gnar', 'Gragas', 'Graves', 'Hecarim', 'Heimerdinger', 'Illaoi', 'Irelia', 'Ivern', 'Janna', 'Jax',
-		 'Jayce', 'Jhin', 'Jinx', 'Kalista', 'Karma', 'Karthus', 'Kassadin', 'Katarina', 'Kayle', 'Kennen', 'Kindred', 'Leona', 'Lissandra', 'Lucian', 'Lulu', 'Lux', 'Malphite', 'Malzahar', 'Maokai',
-		 'Mordekaiser', 'Morgana', 'Nami', 'Nasus', 'Nautilus', 'Nidalee', 'Nocturne', 'Nunu', 'Olaf', 'Orianna', 'Pantheon', 'Poppy', 'Quinn', 'Rammus', 'Renekton', 'Rengar', 'Riven', 'Rumble', 'Ryze', 'Sejuani',
-		 'Shaco', 'Shen', 'Shyvana', 'Singed', 'Sion', 'Sivir', 'Skarner', 'Sona', 'Soraka', 'Swain', 'Syndra', 'Taliyah', 'Talon', 'Taric', 'Teemo', 'Thresh', 'Tristana', 'Trundle', 'Tryndamere', 'Twitch',
-		 'Udyr', 'Urgot', 'Varus', 'Vayne', 'Veigar', 'Vi', 'Viktor', 'Vladimir', 'Volibear', 'Warwick', 'Xerath', 'Yasuo', 'Yorick', 'Zac', 'Zed', 'Ziggs', 'Zilean', 'Zyra'];
+		for (var i = 1; i <= 20; i++) {
+			var Chance = require('chance'),
+	    chance = new Chance();
 
-		var Chance = require('chance'),
-    chance = new Chance();
+				var newPerson = model;
+				newPerson.fullName = chance.name();
+				newPerson.steganoImage = 'assets/images/' + i + '.png';
 
-	  names.forEach(function(item, index) {
-			var newPerson = model;
-			newPerson.fullName = chance.name();
-			newPerson.steganoImage = 'assets/images/' + item + '.png';
+				Person
+				.create(model)
+				.then();
+				console.log('>> '+ i);
 
-			Person
-			.create(model)
-			.then();
-			console.log('>> '+ index);
-
-	  });
+		}
 	}
 };
