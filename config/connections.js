@@ -25,7 +25,7 @@ module.exports.connections = {
     adapter: 'sails-steganodb',
     key: '1234567890',
     path: 'assets/',
-    database: 'testDB-development'
+    database: 'cadunicodb'
   },
   // // Production environment
   // mongodb_prod: {
